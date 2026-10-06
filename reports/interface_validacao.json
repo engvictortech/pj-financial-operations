@@ -1,0 +1,37 @@
+{
+  "verificado_em_utc": "2026-10-06T13:19:02.358425+00:00",
+  "python": "3.12.14",
+  "natureza": "DADOS SINTETICOS",
+  "testes_motor": 13,
+  "testes_http": 10,
+  "testes_atualizador": 7,
+  "total_testes_unittest_aprovados": 30,
+  "javascript_sintaxe": "aprovada",
+  "javascript_api_real_dom_simulado": [
+    "abertura de caso",
+    "fila e lote",
+    "conflito de versao",
+    "texto preservado e escapado",
+    "encerramento e reabertura"
+  ],
+  "layout_em_navegador": "Capturas do usuario conferidas: fila, detalhe, historico e lotes em navegador desktop Windows. Sem verificacao de layout mobile.",
+  "preservacao_verificada": "Copia temporaria com caso 2324, Victor, versao 4 e quatro eventos; banco original sem alteracao.",
+  "motor_esquema_fontes_originais": "Identicos ao pacote anterior",
+  "interface_escuta": "127.0.0.1",
+  "limites": [
+    "Dados simulados",
+    "Identificacao local sem autenticacao",
+    "Sem integracao financeira real"
+  ],
+  "correcao_atualizador": {
+    "verificado_em_utc": "2026-10-06T16:05:23.399617+00:00",
+    "problema": "Connection como contexto nao fecha o arquivo SQLite; WinError 32 na limpeza de bancos temporarios.",
+    "correcao": "contextlib.closing nas conexoes de origem e destino do backup.",
+    "testes_regressao": [
+      "Fechamento explicito de ambas as conexoes no sucesso",
+      "Fechamento no erro de backup e preservacao do original"
+    ],
+    "validacao_local": "7 testes aprovados em Python 3.12.14; conexoes retidas em memoria ficam inutilizaveis apos fechamento.",
+    "validacao_windows": "10 testes HTTP e 7 testes do atualizador aprovados no Windows com Python 3.13.15."
+  }
+}

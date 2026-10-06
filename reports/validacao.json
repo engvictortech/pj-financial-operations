@@ -1,0 +1,27 @@
+{
+  "data_corte": "2026-09-30",
+  "natureza": "DADOS SINTETICOS",
+  "seed": 42,
+  "empresas": 300,
+  "recebiveis": 12000,
+  "elegiveis": 11727,
+  "esperado_centavos": 11674106449,
+  "pago_centavos": 10821901216,
+  "saldo_aberto_centavos": 858055233,
+  "excesso_centavos": 5850000,
+  "conciliados_no_prazo": 9380,
+  "status": {
+    "PARCIAL": 585,
+    "A_MAIOR": 585,
+    "LIQUIDADO_COM_ATRASO": 586,
+    "CONCILIADO_NO_PRAZO": 9380,
+    "A_VENCER": 273,
+    "PENDENTE": 591
+  },
+  "qualidade": {
+    "duplicatas_tecnicas_removidas": 586,
+    "linhas_fora_do_corte": 293,
+    "pagamentos_sem_recebivel": 1,
+    "valor_orfao_centavos": 12345
+  }
+}

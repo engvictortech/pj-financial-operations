@@ -1,0 +1,22 @@
+{
+  "verificado_em_utc": "2026-10-06T00:40:31.603332+00:00",
+  "python": "3.12.14",
+  "natureza": "DADOS SINTETICOS",
+  "etapa": "Motor operacional e CLI; interface visual pendente",
+  "testes_unittest_aprovados": 13,
+  "ocorrencias_primeira_importacao": 2348,
+  "cli_verificada": [
+    "iniciar",
+    "listar",
+    "ver",
+    "atribuir",
+    "analisar",
+    "observar",
+    "resolver",
+    "reabrir"
+  ],
+  "reimportacao_sem_duplicar": true,
+  "versao_antiga_rejeitada": true,
+  "resolucao_preserva_financeiro": true,
+  "historico_preservado_na_reabertura": true
+}

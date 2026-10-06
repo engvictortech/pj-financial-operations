@@ -1,0 +1,28 @@
+-- Crie cada medida individualmente no Power BI.
+
+Recebíveis Elegíveis =
+CALCULATE(COUNTROWS(conciliacao), KEEPFILTERS(conciliacao[elegivel] = 1))
+
+Valor Esperado =
+DIVIDE(CALCULATE(SUM(conciliacao[valor_esperado_centavos]), KEEPFILTERS(conciliacao[elegivel] = 1)), 100)
+
+Valor Recebido =
+DIVIDE(CALCULATE(SUM(conciliacao[valor_pago_centavos]), KEEPFILTERS(conciliacao[elegivel] = 1)), 100)
+
+Saldo Aberto =
+DIVIDE(SUM(conciliacao[saldo_aberto_centavos]), 100)
+
+Excesso Recebido =
+DIVIDE(SUM(conciliacao[excesso_centavos]), 100)
+
+Conciliados no Prazo =
+CALCULATE(COUNTROWS(conciliacao), KEEPFILTERS(conciliacao[elegivel] = 1), KEEPFILTERS(conciliacao[status] = "CONCILIADO_NO_PRAZO"))
+
+Taxa de Conciliação no Prazo =
+DIVIDE([Conciliados no Prazo], [Recebíveis Elegíveis])
+
+Liquidados com Atraso =
+CALCULATE(COUNTROWS(conciliacao), KEEPFILTERS(conciliacao[elegivel] = 1), KEEPFILTERS(conciliacao[status] = "LIQUIDADO_COM_ATRASO"))
+
+Maior Idade de Saldo =
+CALCULATE(MAX(conciliacao[dias_aberto]), KEEPFILTERS(conciliacao[saldo_aberto_centavos] > 0))
