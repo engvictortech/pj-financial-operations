@@ -1,0 +1,50 @@
+{
+  "natureza": "DADOS SINTETICOS",
+  "ambiente": "DEMONSTRACAO ESTATICA NO NAVEGADOR",
+  "publicacao": "PENDENTE DE ENVIO AO GITHUB E ATIVACAO DO PAGES",
+  "validacao": {
+    "sistema": "Linux",
+    "python": "3.12.14",
+    "node": "24.19.0",
+    "testes_originais": {
+      "operacoes": 13,
+      "http": 10,
+      "atualizador": 7,
+      "resultado": "APROVADOS"
+    },
+    "testes_demo": {
+      "regras_javascript": 10,
+      "interface_dom_simulado": 1,
+      "exportador_python": 3,
+      "instalador": 4,
+      "resultado": "APROVADOS"
+    },
+    "total": 48,
+    "qa_visual_navegador": "NAO REALIZADO; browser indisponivel no ambiente",
+    "validacao_windows": "PENDENTE; realizar instalacao e testes no computador do autor"
+  },
+  "base": {
+    "empresas": 300,
+    "recebiveis": 12000,
+    "ocorrencias": 2348,
+    "estados_iniciais": "Todas ABERTA, sem responsavel",
+    "corte": "2026-09-30"
+  },
+  "isolamento": {
+    "operacoes_sqlite": "NAO ACESSADO",
+    "readme": "NAO MODIFICADO",
+    "persistencia_demo": "Memoria da aba; reiniciar ou recarregar descarta alteracoes"
+  },
+  "limites": [
+    "Sem backend Python hospedado",
+    "Sem autenticacao",
+    "Sem banco compartilhado",
+    "Sem garantia transacional de banco no navegador",
+    "Encerrar nao altera valores financeiros"
+  ],
+  "publicacao_recomendada": {
+    "branch": "main",
+    "pasta": "/docs",
+    "url_prevista": "https://engvictortech.github.io/pj-financial-operations/"
+  }
+}

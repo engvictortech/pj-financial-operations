@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PJ Financial Operations · Demonstração interativa</title>
+  <meta name="description" content="Explore 2.348 ocorrências financeiras simuladas: conciliação, pagamentos de origem e histórico de investigação. Projeto de Victor Crispim.">
+  <link rel="stylesheet" href="./demo/app.css">
+  <link rel="stylesheet" href="./demo/demo.css">
+  <script src="./demo/demo-engine.js" defer></script>
+  <script src="./demo/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <aside class="rail" aria-label="Navegação principal">
+    <div class="wordmark">PJ Financial<span>Operations</span></div>
+    <div class="rail-caption">ÁREA DE TRABALHO</div>
+    <nav>
+      <button class="nav-item active" data-view="fila" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM4 10h16M9 10v9"/></svg>Ocorrências</button>
+      <button class="nav-item" data-view="lotes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>Lotes e qualidade</button>
+    </nav>
+    <div class="rail-bottom"><span class="local-dot"></span>Demonstração online<p>Dados simulados<br>Projeto independente</p><div class="rail-version">Python + SQL · portfólio</div></div>
+  </aside>
+  <div class="shell">
+    <header class="topbar">
+      <div class="breadcrumb">Operações financeiras<span>/</span><strong id="breadcrumb-current">Ocorrências</strong></div>
+      <div class="operator"><span class="operator-avatar" aria-hidden="true">V</span><div><small>IDENTIFICAÇÃO LOCAL</small><button id="actor-button" class="actor-button">Victor <span>⌄</span></button></div></div>
+    </header>
+    <main id="main">
+      <section class="demo-intro" aria-labelledby="demo-title">
+        <div class="eyebrow">PORTFÓLIO · VICTOR CRISPIM</div>
+        <h2>Uma diferença financeira exige uma investigação.</h2>
+        <p>Explore uma fila com <strong>2.348 ocorrências</strong> geradas a partir de <strong>12.000 recebíveis de 300 empresas fictícias</strong>. Confira a origem, atribua um responsável e registre sua análise.</p>
+        <div class="demo-tools">
+          <button class="button primary" id="demo-example" disabled>Explorar um pagamento parcial →</button>
+          <a class="button secondary" href="https://github.com/engvictortech/pj-financial-operations" target="_blank" rel="noopener noreferrer">Ver código e documentação ↗</a>
+          <button class="text-button" id="demo-reset" disabled>Reiniciar demonstração</button>
+        </div>
+        <details><summary>O que observar neste caso?</summary><ol>
+          <li>Na ocorrência #304, compare o esperado de R$ 19.526,34 com o pagamento de R$ 9.763,17: a liquidação corresponde a 50% do valor.</li>
+          <li>Confira o evento P001581_0 e a data de 28/03/2025. Um pagamento na data prevista pode deixar saldo em aberto.</li>
+          <li>Atribua um responsável, inicie a análise e registre uma observação com evidência e próximo passo. A causa permanece a investigar.</li>
+          <li>Exporte o JSON. Se experimentar encerrar e reabrir, confira que o saldo financeiro de R$ 9.763,17 permanece preservado.</li>
+        </ol></details>
+        <p class="demo-limit">Dados sintéticos · simulação independente no navegador. Alterações ficam somente nesta aba e são descartadas ao recarregar. A versão Python com SQLite e testes está no repositório.</p>
+      </section>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <section class="page-head">
+        <div><div class="eyebrow">CONCILIAÇÃO E TRATAMENTO</div><h1 id="page-title">Fila de investigação</h1><p id="page-subtitle">Confira a origem de cada diferença e documente o tratamento.</p></div>
+        <div class="head-actions"><button class="button secondary" id="refresh-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10a8 8 0 1 0-1 7M20 4v6h-6"/></svg>Atualizar</button><button class="button primary" id="import-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M4 16v5h16v-5"/></svg>Conferir lote carregado</button></div>
+      </section>
+      <section class="scope-bar" aria-label="Origem dos dados">
+        <span class="scope-label">LOTE</span><label class="sr-only" for="lot-select">Selecionar lote</label><select id="lot-select"><option>Carregando lotes…</option></select>
+        <span class="scope-separator"></span><span id="cutoff-label">Corte —</span><span class="demo-label">DADOS SINTÉTICOS</span>
+      </section>
+      <section id="queue-view">
+        <div class="status-tabs" aria-label="Filtrar por estado de tratamento">
+          <button data-status="" class="status-tab active" aria-pressed="true">Todas<span id="count-all">—</span></button>
+          <button data-status="ABERTA" class="status-tab" aria-pressed="false"><i class="dot gray"></i>Abertas<span id="count-open">—</span></button>
+          <button data-status="EM_ANALISE" class="status-tab" aria-pressed="false"><i class="dot blue"></i>Em análise<span id="count-review">—</span></button>
+          <button data-status="RESOLVIDA" class="status-tab" aria-pressed="false"><i class="dot green"></i>Encerradas<span id="count-closed">—</span></button>
+        </div>
+        <div class="workspace">
+          <section class="queue-panel" aria-label="Lista de ocorrências">
+            <div class="filters">
+              <div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><label class="sr-only" for="search">Buscar ocorrência, recebível ou empresa</label><input id="search" type="search" placeholder="Buscar ocorrência, recebível ou empresa" maxlength="80" autocomplete="off"></div>
+              <div class="filter-row">
+                <label>Prioridade<select id="priority-filter"><option value="">Todas</option><option>P1</option><option>P2</option><option>P3</option></select></label>
+                <label>Motivo<select id="reason-filter"><option value="">Todos</option><option value="PENDENTE">Pendente</option><option value="PARCIAL">Pagamento parcial</option><option value="A_MAIOR">Recebido a maior</option><option value="LIQUIDADO_COM_ATRASO">Liquidado com atraso</option><option value="PAGAMENTO_SEM_RECEBIVEL">Pagamento sem vínculo</option></select></label>
+                <label>Responsável<select id="owner-filter"><option value="">Todos</option><option value="--sem--">Sem responsável</option><option value="--me--">Minhas ocorrências</option></select></label>
+                <button class="text-button" id="clear-filters">Limpar filtros</button>
+              </div>
+            </div>
+            <div class="table-headline"><strong id="result-count">Carregando ocorrências…</strong><span>Prioridade → valor → idade</span></div>
+            <div class="table-scroll"><table class="queue-table"><thead><tr><th scope="col">Ocorrência / referência</th><th scope="col">Motivo</th><th scope="col">Prioridade</th><th scope="col" class="numeric">Valor a investigar</th><th scope="col" class="numeric">Idade</th><th scope="col">Tratamento</th></tr></thead><tbody id="queue-body"></tbody></table></div>
+            <div id="empty-state" class="empty-state" hidden><h2>Nenhuma ocorrência encontrada</h2><p>Ajuste os filtros ou importe a base de demonstração para começar.</p></div>
+            <footer class="table-footer"><span id="page-label">—</span><div><button class="pager" id="prev-page" aria-label="Página anterior">←</button><button class="pager" id="next-page" aria-label="Próxima página">→</button></div></footer>
+          </section>
+          <aside id="inspector" class="inspector" aria-label="Investigação da ocorrência" hidden></aside>
+        </div>
+        <p class="scope-footnote">A idade do saldo é calculada no corte do lote. O estado do tratamento não altera a situação financeira.</p>
+      </section>
+      <section id="lots-view" class="lots-view" hidden></section>
+      <footer class="page-footer"><span>PJ Financial Operations</span><span id="db-label">Simulação nesta aba</span><span>Sem vínculo com instituições financeiras</span></footer>
+    </main>
+  </div>
+  <dialog id="action-dialog" aria-labelledby="dialog-title">
+    <form id="action-form">
+      <div class="dialog-head"><div><div class="eyebrow" id="dialog-caption">TRATAMENTO</div><h2 id="dialog-title">Registrar ação</h2></div><button type="button" class="icon-button" id="dialog-close" aria-label="Fechar formulário">×</button></div>
+      <p id="dialog-description" class="dialog-description"></p>
+      <div id="dialog-fields"></div>
+      <div id="dialog-error" class="dialog-error" role="alert" hidden></div>
+      <button type="button" class="text-button" id="review-version" hidden>Revisei o estado atualizado; usar a nova versão</button>
+      <div class="dialog-foot"><span id="dialog-version"></span><div><button type="button" class="button secondary" id="dialog-cancel">Cancelar</button><button type="submit" class="button primary" id="dialog-submit">Confirmar</button></div></div>
+    </form>
+  </dialog>
+</body>
+</html>
