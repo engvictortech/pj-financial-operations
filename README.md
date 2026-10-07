@@ -15,6 +15,12 @@
 
 [Aplicação](#aplicação-em-operação) · [Caso demonstrado](#caso-demonstrado) · [Controles](#controles-implementados) · [Tecnologias](#tecnologias) · [Executar](#como-executar) · [Testes](#validação)
 
+## Demonstração online
+
+**[Abrir demonstração interativa →](https://engvictortech.github.io/pj-financial-operations/)**
+
+Explore a fila de investigação, confira os pagamentos de origem e experimente o tratamento das ocorrências. Dados simulados; alterações ficam somente na aba do visitante e são descartadas ao recarregar.
+
 ## Em 30 segundos
 
 Uma aplicação para transformar diferenças de liquidação em casos que um analista pode **conferir, priorizar e documentar**. O projeto reúne conciliação em Python e SQL, uma fila operacional no navegador e evidências preservadas por lote.
